@@ -145,7 +145,7 @@ That's it — **the backend creates all tables automatically on first startup**
 
 ### Running Setup
 
-Open **two PowerShell terminals** in the project root:
+The easy way — open **two PowerShell terminals** in the project root:
 
 **Terminal 1 — Backend**
 ```powershell
@@ -159,6 +159,34 @@ Open **two PowerShell terminals** in the project root:
 .\start-frontend.ps1
 ```
 - Installs npm packages, runs on **http://localhost:3000**
+
+### Manual Setup (if you prefer running each step yourself)
+
+**Terminal 1 — Backend**
+
+First-time only, create the virtual environment:
+```powershell
+cd backend
+python -m venv venv
+```
+
+Then activate it and start the server:
+```powershell
+.\venv\Scripts\Activate.ps1
+uvicorn main:app --host 0.0.0.0 --port 8000 --reload
+```
+→ Runs on **http://localhost:8000** (API docs at `/docs`).
+
+> If PowerShell refuses the activation script with a *scripts are disabled*
+> error, run once: `Set-ExecutionPolicy -Scope CurrentUser RemoteSigned`
+
+**Terminal 2 — Frontend**
+```powershell
+cd frontend
+npm install      # first time only
+npm run dev
+```
+→ Runs on **http://localhost:3000**
 
 **Default login:** `admin` / `admin` → you must change the password on first login.
 
