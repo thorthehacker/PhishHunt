@@ -24,3 +24,6 @@ Thumbs.db
 desktop.ini
 .idea/
 .vscode/
+frontend/next-dev.log
+AGENTS.md
+CLAUDE.md

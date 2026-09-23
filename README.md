@@ -40,7 +40,7 @@ phishing simulation made this tool possible) and pushes the idea further with a
    next page."* You can chain **multiple pages together** (a username page, then a
    password page, then a "wrong password" page), which makes it extremely
    realistic. **This multipage phishing is the core focus of Phish Hunt.**
-4. **You share the link** (example: `http://localhost:3000/build/743`) with the
+4. **You share the link** (example: `http://localhost:3000/build/1`) with the
    people you are testing.
 5. **Everything is recorded, live:** every page visit counts as a *Link Click*,
    every typed email/username is captured along with the password entry moment,
