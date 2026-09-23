@@ -3,7 +3,7 @@
 </p>
 
 <h1 align="center">
-  <img src="screenshots/banner.svg" alt="PHISHHUNT" />
+  <img src="assets/banner.svg" alt="PHISHHUNT" />
 </h1>
 
 <p align="center">
