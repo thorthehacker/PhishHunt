@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instagram</title>
+
+
+<link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+      integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer">
+
+<style>
+    * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+        height: 100vh;
+        background-color: #FAFAFA;
+        overflow-y: hidden;
+    }
+
+    .container {
+        display: flex;
+        justify-content: center;
+        margin: 60px 0;
+    }
+
+    .instagramAll {
+        margin-left: 30px;
+    }
+
+    .imagesAndTransistion {
+        position: relative;
+    }
+
+    .imagesAndTransistion > #frame1 > img {
+        height: 570px;
+        width: 290px;
+    }
+
+    .imagesAndTransistion > #frame2 > img:nth-child(1) {
+        height: 540px;
+        position: absolute;
+        top: -12px;
+        left: -90px;
+        z-index: -1;
+    }
+
+    .imagesAndTransistion > #frame2 > img:nth-child(2) {
+        height: 530px;
+        position: absolute;
+        top: 0;
+        left: -70px;
+        z-index: -2;
+    }
+
+    .transistionImages > img {
+        position: absolute;
+        top: 10px;
+        left: 16px;
+        transition: 1.5s ease-in;
+    }
+
+    /* Main Instagram box */
+    .instagramForm {
+        margin-top: 15px;
+        background-color: white;
+        border: 1px solid gainsboro;
+        border-radius: 12px;
+        height: fit-content;
+        padding: 10px 50px 20px;
+        width: 380px;
+    }
+
+    .insta-font {
+        display: flex;
+        justify-content: center;
+    }
+
+    .insta-font > img {
+        width: 200px;
+        height: 100px;
+        margin-bottom: 20px;
+    }
+
+    .inputs {
+        display: flex;
+        flex-direction: column;
+    }
+
+    /* Username / Email field */
+    .email > input[type="text"]:focus,
+    .password > input[type="password"]:focus,
+    .password > input[type="text"]:focus {
+        outline: 0;
+        border: 1px solid rgb(189, 199, 159);
+    }
+
+    .email > input[type="text"],
+    .password > input[type="password"],
+    .password > input[type="text"] {
+        height: 35px;
+        width: 100%;
+        margin-bottom: 10px;
+        border: 1px solid rgb(228, 228, 228);
+        border-radius: 7px;
+        padding: 10px 0 10px 10px;
+        font-size: 13px;
+        color: #262626;
+        background-color: transparent;
+    }
+
+    .password > input[type="password"],
+    .password > input[type="text"] {
+        padding-right: 45px;
+    }
+
+    /* Login button */
+    #login {
+        height: 35px;
+        border-radius: 10px;
+        color: white;
+        background-color: #4DB5F9;
+        font-weight: bold;
+        border: 0;
+        margin-bottom: 20px;
+        transition: 0.2s ease-in;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+    }
+
+    #login i {
+        font-size: 13px;
+    }
+
+    .or {
+        position: relative;
+    }
+
+    #or {
+        align-items: center;
+        text-align: center;
+        align-content: center;
+        padding: 10px;
+        background-color: rgb(255, 255, 255);
+        border-radius: 100%;
+        position: absolute;
+        top: -17px;
+        left: 115px;
+        font-size: 13px;
+        font-weight: bold;
+    }
+
+    .loginWithFacebook {
+        margin: 20px auto;
+    }
+
+    .loginWithFacebook i {
+        font-size: 20px;
+        margin-right: 5px;
+    }
+
+    .loginWithFacebook > a {
+        text-decoration: none;
+        font-size: 15px;
+        font-weight: 500;
+        margin: auto;
+        color: #385185;
+    }
+
+    #forget {
+        margin: 0 auto;
+        font-size: 14px;
+    }
+
+    #forget a {
+        text-decoration: none;
+        color: #385989;
+    }
+
+    /* Don't have an account box */
+    .no-account {
+        border: 1px solid gainsboro;
+        background-color: white;
+        width: 380px;
+        text-align: center;
+        padding: 15px;
+        margin: 10px 0;
+        font-size: 16px;
+        border-radius: 12px;
+    }
+
+    .no-account a {
+        text-decoration: none;
+        color: #0095F6;
+        font-weight: 500;
+    }
+
+    /* Meta section */
+    .meta-section {
+        text-align: center;
+        margin: 20px 0 15px;
+    }
+
+    .meta-logo {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 6px;
+        font-size: 20px;
+        font-weight: 600;
+        color: #262626;
+    }
+
+    .meta-logo i {
+        font-size: 23px;
+    }
+
+    .downloadLinks {
+        display: flex;
+        justify-content: space-around;
+        margin: 0 30px;
+    }
+
+    .downloadLinks img {
+        width: 25px;
+        height: 25px;
+        margin: 10px 5px 0 10px;
+    }
+
+    .googlePlay,
+    .microsoft {
+        display: flex;
+    }
+
+    .btn {
+        width: 140px;
+        background-color: black;
+        color: white;
+        padding-bottom: 5px;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .btn:active {
+        opacity: 0.7;
+    }
+
+    .btn span {
+        font-size: 10px;
+    }
+
+    .email,
+    .password {
+        position: relative;
+    }
+
+    #emailPlaceholder,
+    #passwordPlaceholder {
+        position: absolute;
+        top: 8px;
+        left: 5px;
+        padding-left: 6px;
+        font-size: 12px;
+        opacity: 0.7;
+        pointer-events: none;
+        transition: 0.1s ease;
+    }
+
+    /* Password eye */
+    #showOrHide {
+        position: absolute;
+        right: 12px;
+        top: 9px;
+        cursor: pointer;
+        font-size: 16px;
+        color: #262626;
+        transition: 0.15s ease;
+    }
+
+    #showOrHide:hover {
+        opacity: 0.6;
+    }
+
+    .fadingImages {
+        width: 260px;
+        overflow: hidden;
+        height: 550px;
+        z-index: -1;
+    }
+
+    @media (max-width: 950px) {
+        .imagesAndTransistion {
+            display: none;
+        }
+    }
+</style>
+.
+
+</head>
+
+<body>
+
+
+<div class="container">
+
+    <div class="imagesAndTransistion">
+
+        <div id="frame1">
+            <img src="https://raw.githubusercontent.com/mahesh00009/instagram/main/mobile-frame4.png" alt="">
+        </div>
+
+        <div id="frame2">
+            <img src="https://raw.githubusercontent.com/mahesh00009/instagram/main/mobile-frame3.png" alt="">
+            <img src="https://raw.githubusercontent.com/mahesh00009/instagram/main/screenshot4.png" alt="">
+        </div>
+
+        <div class="transistionImages">
+            <img src="https://raw.githubusercontent.com/mahesh00009/instagram/main/screenshot5.png" alt="" class="fadingImages">
+            <img src="https://raw.githubusercontent.com/mahesh00009/instagram/main/screenshot3.png" alt="" class="fadingImages">
+            <img src="https://raw.githubusercontent.com/mahesh00009/instagram/main/screenshot2.png" alt="" class="fadingImages">
+            <img src="https://raw.githubusercontent.com/mahesh00009/instagram/main/screenshot1.png" alt="" class="fadingImages">
+        </div>
+
+    </div>
+
+    <div class="instagramAll">
+
+        <div class="instagramForm">
+
+            <div class="insta-font">
+                <img src="https://raw.githubusercontent.com/mahesh00009/instagram/main/instagram-font.png" alt="">
+            </div>
+
+            <div class="inputs">
+
+                <div class="email">
+                    <input type="text" id="email" oninput="check()">
+                    <span id="emailPlaceholder">Phone number, username, or email</span>
+                </div>
+
+                <div class="password">
+                    <input type="password" id="password" oninput="check()">
+                    <span id="passwordPlaceholder">Password</span>
+                    <span id="showOrHide" onclick="showOrHide1()"></span>
+                </div>
+
+                <button id="login" disabled>
+                    <i id="loginIcon" class="fa-solid fa-lock"></i>
+                    <span>Log in</span>
+                </button>
+
+                <div class="or">
+                    <hr>
+                    <span id="or">OR</span>
+                </div>
+
+                <div class="loginWithFacebook">
+                    <a href="#">
+                        <i class="fa-brands fa-facebook"></i>
+                        <span>Log in with Facebook</span>
+                    </a>
+                </div>
+
+                <p id="forget">
+                    <a href="#">Forgot password?</a>
+                </p>
+
+            </div>
+        </div>
+
+        <div class="no-account">
+            <p id="noAccount">
+                Don't have an account?
+                <span><a href="#">Sign up</a></span>
+            </p>
+        </div>
+
+        <!-- Meta -->
+        <div class="meta-section">
+            <div class="meta-logo">
+                <i class="fa-brands fa-meta"></i>
+                <span>Meta</span>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+    const email = document.getElementById("email");
+    const password = document.getElementById("password");
+
+    const emailPlaceholder = document.getElementById("emailPlaceholder");
+    const passwordPlaceholder = document.getElementById("passwordPlaceholder");
+
+    const showOrHide = document.getElementById("showOrHide");
+    const login = document.getElementById("login");
+    const loginIcon = document.getElementById("loginIcon");
+
+    const fadingImages = document.querySelectorAll(".fadingImages");
+
+    /* Slideshow */
+    function displayImages(from, to) {
+        let current = to;
+
+        setInterval(function () {
+
+            fadingImages[current].style.opacity = "0";
+
+            if (current == from) {
+                current = to + 1;
+            }
+
+            current--;
+
+            fadingImages[current].style.opacity = "1";
+
+        }, 4000);
+    }
+
+    displayImages(0, 3);
+
+    /* Input handling */
+    function check() {
+
+        /* Username / Email */
+
+        if (email.value === "") {
+
+            emailPlaceholder.style.fontSize = "12px";
+            emailPlaceholder.style.top = "8px";
+            emailPlaceholder.style.opacity = "0.7";
+            email.style.paddingTop = "";
+
+        } else {
+
+            emailPlaceholder.style.fontSize = "10px";
+            emailPlaceholder.style.top = "3px";
+            emailPlaceholder.style.opacity = "0.7";
+            email.style.fontSize = "12px";
+            email.style.paddingTop = "20px";
+        }
+
+        /* Password */
+
+        if (password.value === "") {
+
+            passwordPlaceholder.style.fontSize = "12px";
+            passwordPlaceholder.style.top = "8px";
+            passwordPlaceholder.style.opacity = "0.7";
+            password.style.paddingTop = "";
+
+            showOrHide.className = "";
+
+        } else {
+
+            passwordPlaceholder.style.fontSize = "10px";
+            passwordPlaceholder.style.top = "3px";
+            passwordPlaceholder.style.opacity = "0.7";
+            password.style.fontSize = "12px";
+            password.style.paddingTop = "20px";
+
+            /* Eye slash when password is hidden */
+            if (password.type === "password") {
+                showOrHide.className = "fa-solid fa-eye-slash";
+            } else {
+                showOrHide.className = "fa-solid fa-eye";
+            }
+        }
+
+        /* Login button */
+
+        if (email.value !== "" && password.value !== "") {
+
+            login.style.backgroundColor = "#049bff";
+            login.style.cursor = "pointer";
+            login.disabled = false;
+
+            /* Unlock */
+            loginIcon.className = "fa-solid fa-lock-open";
+
+        } else {
+
+            login.style.backgroundColor = "#4DB5F9";
+            login.style.cursor = "default";
+            login.disabled = true;
+
+            /* Lock */
+            loginIcon.className = "fa-solid fa-lock";
+        }
+    }
+
+    /* Show / Hide password */
+    function showOrHide1() {
+
+        if (password.value === "") {
+            return;
+        }
+
+        if (password.type === "password") {
+
+            password.type = "text";
+
+            /* Normal eye when visible */
+            showOrHide.className = "fa-solid fa-eye";
+
+        } else {
+
+            password.type = "password";
+
+            /* Striked eye when hidden */
+            showOrHide.className = "fa-solid fa-eye-slash";
+        }
+    }
+
+    /* Set initial login state */
+    check();
+</script>
+
+
+</body>
+</html>

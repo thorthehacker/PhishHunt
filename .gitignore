@@ -1,0 +1,26 @@
+# ── Secrets & environment ─────────────────────────────────────
+backend/.env
+frontend/.env.local
+
+# ── Python (backend) ──────────────────────────────────────────
+backend/venv/
+__pycache__/
+*.py[cod]
+backend/backend.db
+
+# ── Local generated data (created at runtime, never share) ────
+backend/clone-assets/
+extracted_pages/
+frontend/public/templates/builds/
+
+# ── Node / frontend build ─────────────────────────────────────
+frontend/node_modules/
+frontend/.next/
+*.tsbuildinfo
+
+# ── OS / editor junk ──────────────────────────────────────────
+.DS_Store
+Thumbs.db
+desktop.ini
+.idea/
+.vscode/
